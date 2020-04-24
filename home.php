@@ -15,7 +15,7 @@ if(isset($_POST['submit'])){
 
     $user_class = new User($worked['id']);
 
-    if($worked['password'] == $password){
+    if(!password_verify($password,$worked['password'])){
 
         if($user_class->rmdays > 0){
 

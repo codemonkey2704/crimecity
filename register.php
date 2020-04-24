@@ -34,6 +34,7 @@ if (isset($_POST['submit'])) {
 
     //insert the values
     if (!isset($message)){
+        $password = password_hash($password, PASSWORD_BCRYPT);
         DB::insert('grpgusers', ['ip' => $_SERVER['REMOTE_ADDR'], 'username' => $username, 'password' => $password, 'email' => $email, 'signuptime' => $signuptime, 'lastactive' => $signuptime]);
         echo Message('Your account has been created successfully! Redirecting to login page in 5 seconds. <meta http-equiv="refresh" content="5;url=index.php">');
           if ($referer){
